@@ -1,0 +1,95 @@
+{
+	"navs": [
+		{"title": "HOME", "link" : "#", "class":"navi0", "icon":"", "subs":[
+			{"title":"<span>1.</span> Bakery", "src": "../img/bakery.jpg", "link": "#"},
+			{"title":"<span>2.</span> Bicycle", "src": "../img/bicycle.jpg", "link": "#"},
+			{"title":"<span>3.</span> Car", "src": "../img/car.jpg", "link": "#"},
+			{"title":"<span>4.</span> Coffee", "src": "../img/coffee.jpg", "link": "#"},
+			{"title":"<span>5.</span> Cosmetics", "src": "../img/cosmetics.jpg", "link": "#"},
+			{"title":"<span>6.</span> Electronics", "src": "../img/electronics.jpg", "link": "#"},
+			{"title":"<span>7.</span> Fashion", "src": "../img/fashion_2.jpg", "link": "#"},
+			{"title":"<span>8.</span> Furniture", "src": "../img/furniture.jpg", "link": "#"},
+			{"title":"<span>9.</span> Game", "src": "../img/game.jpg", "link": "#"},
+			{"title":"<span>10.</span> Lighting", "src": "../img/lighting.jpg", "link": "#"}
+		]},
+		{
+			"title":"SHOP", "link":"#", "class":"navi1 stc", "icon": "SALE", "color":"red", "subs": [
+				{"title":"SHOP STYLES", "link": "#", "subs":[
+					{"title":"Quick shop product", "link": "#", "icon": "HOT", "color":"yellow"},
+					{"title":"Masonry Grid", "link": "#", "icon": ""},
+					{"title":"Default style", "link": "#", "icon": ""},
+					{"title":"Alternative Shop", "link": "#", "icon": "HOT", "color":"yellow"},
+					{"title":"Button on hover", "link": "#", "icon": ""},
+					{"title":"Button hover alt", "link": "#", "icon": ""},
+					{"title":"Hover info", "link": "#", "icon": ""},
+					{"title":"Standard button", "link": "#", "icon": ""},
+					{"title":"Full width", "link": "#", "icon": ""}
+				]},
+				{"title":"PRODUCT PAGES", "link": "#", "subs":[
+					{"title":"Default style", "link": "#", "icon": ""},
+					{"title":"Alternative style", "link": "#", "icon": ""},
+					{"title":"Compact", "link": "#", "icon": "NEW", "color":"green"},
+					{"title":"Sticky details", "link": "#", "icon": "HOT", "color":"yellow"},
+					{"title":"Variationst images", "link": "#", "icon": ""},
+					{"title":"Variations style 2", "link": "#", "icon": ""},
+					{"title":"Variant images grouped", "link": "#", "icon": ""},
+					{"title":"Powerful Layout", "link": "#", "icon": ""},
+					{"title":"With sidebar", "link": "#", "icon": ""}
+				]},
+				{"title":"PRODUCT FEATURES", "link": "#", "subs":[
+					{"title":"360° product viewer", "link": "#", "icon": ""},
+					{"title":"Zoom image", "link": "#", "icon": ""},
+					{"title":"With video", "link": "#", "icon": "NEW", "color":"green"},
+					{"title":"Large Image", "link": "#", "icon": ""},
+					{"title":"Small Image", "link": "#", "icon": ""},
+					{"title":"Variable Product", "link": "#", "icon": ""},
+					{"title":"Grouped Product", "link": "#", "icon": ""},
+					{"title":"External Product", "link": "#", "icon": ""},
+					{"title":"Sidebar right", "link": "#", "icon": ""},
+					{"title":"Product Instagram Tags", "link": "#", "icon": ""}
+				]},
+				{"title":"SHOP PAGES", "link": "#", "subs":[
+					{"title":"2 Columns", "link": "#", "icon": ""},
+					{"title":"3 Columns", "link": "#", "icon": ""},
+					{"title":"4 Columns", "link": "#", "icon": ""},
+					{"title":"6 Columns", "link": "#", "icon": ""},
+					{"title":"Sidebar Left", "link": "#", "icon": ""},
+					{"title":"Sidebar Right", "link": "#", "icon": ""},
+					{"title":"No sidebar", "link": "#", "icon": ""},
+					{"title":"Category banner", "link": "#", "icon": ""},
+					{"title":"RTL Shop page", "link": "#", "icon": "NEW", "color":"green"}
+				]}
+			], "infos":[
+				{"title":"FREE SHIPPING", "link":"#", "content":"Free for $50+ orders", "icon":"fa fa-rocket"},
+				{"title":"BUYER SUPPORT", "link":"#", "content":"Get in touch 24/7", "icon":"fa fa-phone"},
+				{"title":"TOTAL SECURITY", "link":"#", "content":"Secure checkout", "icon":"fa fa-th"},
+				{"title":"RETURN POLICY", "link":"#", "content":"14 days ago", "icon":"fa fa-reply"}
+			]
+		},
+		{"title": "BLOG", "link": "#", "class":"navi2", "icon":"", "subs": []},
+		{"title": "PAGES", "link": "#", "class":"navi3", "icon":"", "subs": []},
+		{"title": "FEATURES", "link": "#", "class":"navi4", "icon":"", "subs": []}
+	]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
