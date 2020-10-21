@@ -64,6 +64,70 @@
 				{"title":"BUYER SUPPORT", "link":"#", "content":"Get in touch 24/7", "icon":"fa fa-phone"},
 				{"title":"TOTAL SECURITY", "link":"#", "content":"Secure checkout", "icon":"fa fa-th"},
 				{"title":"RETURN POLICY", "link":"#", "content":"14 days ago", "icon":"fa fa-reply"}
+			], "slides": [
+				{
+					"cases":[
+						{
+							"img": ["../img/ss-01-blue-01.jpg", "../img/ss-01-blue-02.jpg"],
+							"color": "blue"
+						},
+						{
+							"img": ["../img/ss-01-black-01.jpg", "../img/ss-01-black-02.jpg"],
+							"color": "black"
+						},
+						{
+							"img": ["../img/ss-01-yellow-01.jpg", "../img/ss-01-yellow-02.jpg"],
+							"color": "yellow"
+						}
+					],
+					"title": "Yus condntum sapien",
+					"brand": "BASEL",
+					"price": "$592.00",
+					"priceDef": "",
+					"priceSale": ""
+				},
+				{
+					"cases":[
+						{
+							"img": ["../img/ss-02-blue-01.jpg"],
+							"color": "blue"
+						},
+						{
+							"img": ["../img/ss-02-red-01.jpg", "../img/ss-02-red-02.jpg"],
+							"color": "red"
+						},
+						{
+							"img": ["../img/ss-02-yellow-01.jpg"],
+							"color": "yellow"
+						}
+					],
+					"title": "Yus orki lacinia",
+					"brand": "BASEL",
+					"price": "",
+					"priceDef": "$799.00",
+					"priceSale": "$592.00"
+				},
+				{
+					"cases":[
+						{
+							"img": ["../img/ss-01-yellow-01.jpg", "../img/ss-01-yellow-02.jpg"],
+							"color": "yellow"
+						},
+						{
+							"img": ["../img/ss-01-black-01.jpg", "../img/ss-01-black-02.jpg"],
+							"color": "black"
+						},
+						{
+							"img": ["../img/ss-01-blue-01.jpg", "../img/ss-01-blue-02.jpg"],
+							"color": "blue"
+						}
+					],
+					"title": "Yus condntum sapien",
+					"brand": "BASEL",
+					"price": "",
+					"priceDef": "$1,299.00",
+					"priceSale": "$892.00"
+				}
 			]
 		},
 		{"title": "BLOG", "link": "#", "class":"navi2", "icon":"", "subs": []},
