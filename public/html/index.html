@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
 	<script src="../js/jquery.touchSwipe.min.js"></script>
 
 </head>
+
 <body>
 	<header class="header-wrapper">
 		<div class="top-wrapper">
@@ -31,216 +33,62 @@
 			</div>
 		</div>
 
-		<div class="title-wrapper wrapper">
-			<div class="logo-wrap">
-				<img src="../img/logo-basel.svg" alt="logo" class="w-100">
-			</div>
-			<div class="navi-wrap">
-				
-			</div>
-			<div class="cart-wrap">
-				<div class="like badge-wrap">
-					<i class="far fa-heart"></i>
-					<div class="badge count">0</div>
+		<div class="title-wrapper">
+			<div class="wrapper">
+				<div class="navi-mo-wrap">
+					<div class="navi-mo-icon"><i class="fa fa-bars"></i></div>
 				</div>
-				<div class="cart">
-					<i class="fa fa-shopping-cart"></i>
-					<span class="cart-cnt">0</span> <span>/</span> <span class="cart-price">$0.00</span>
+				<div class="logo-wrap">
+					<img src="../img/logo-basel.svg" alt="logo" class="w-100">
+				</div>
+				<div class="navi-wrap">
+
+				</div>
+				<div class="cart-wrap">
+					<div class="like badge-wrap">
+						<i class="far fa-heart"></i>
+						<div class="badge count">0</div>
+					</div>
+					<div class="cart badge-wrap">
+						<i class="fa fa-shopping-cart"></i>
+						<div class="badge count">0</div>
+						<span class="cart-cnt">0</span> <span>/</span> <span class="cart-price">$0.00</span>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="search-wrapper"></div>
+		<div class="search-wrapper wrapper">
+			<div class="browse-wrap">
+				BROWSE Categories
+				<i class="fa fa-angle-down"></i>
+			</div>
+			<form class="search-wrap" action="#">
+				<input type="text" naem="search" class="input-search" placeholder="Search for project">
+				<i class="fa fa-search"></i>
+			</form>
+		</div>
 	</header>
-	<!-- <div class="sub-slide">
-		<div class="stage">
-			<div class="wrap">
-				<div class="slide">
-					<div class="img-wrap">
-						<div class="img-case active">
-							<img src="../img/ss-01-blue-01.jpg" class="w-100">
-							<img src="../img/ss-01-blue-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-01-black-01.jpg" class="w-100">
-							<img src="../img/ss-01-black-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-01-yellow-01.jpg" class="w-100">
-							<img src="../img/ss-01-yellow-02.jpg" class="w-100">
-						</div>
-						<div class="bt bt-quick">
-							<i class="fa fa-shopping-cart"></i> QUICK SHOP
-						</div>
-						<div class="bt bt-icon bt-heart">
-							<div class="popper">
-								Login to use Wishlist <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="far fa-heart"></i> 
-						</div>
-						<div class="bt bt-icon bt-sync">
-							<div class="popper">
-								Compare <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-sync"></i> 
-						</div>
-						<div class="bt bt-icon bt-search">
-							<div class="popper">
-								Quick View <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-search-plus"></i> 
-						</div>
+
+	<nav class="mo-wrapper">
+		<div class="mo-wrap">
+			<form class="mo-search-wrap">
+				<input type="text" name="search" class="input-search" placeholder="search for products">
+				<i class="fa fa-search"></i>
+			</form>
+			<div class="mo-navi-wrap">
+				<div class="mo-navi">
+					HOME
+					<div class="bt-down">
+						<div class="slash slash-lt"></div>
+						<div class="slash slash-rt"></div>
 					</div>
-					<div class="color">
-						<span class="blue">●</span>
-						<span class="black">●</span>
-						<span class="yellow">●</span>
-					</div>
-					<div class="title">Yus condntum sapien</div>
-					<div class="brand">BASEL</div>
-					<div class="price">$592.00</div>
-				</div>
-				<div class="slide">
-					<div class="img-wrap">
-						<div class="img-case active">
-							<img src="../img/ss-02-blue-01.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-02-red-01.jpg" class="w-100">
-							<img src="../img/ss-02-red-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-02-yellow-01.jpg" class="w-100">
-						</div>
-						<div class="bt bt-quick">
-							<i class="fa fa-shopping-cart"></i> QUICK SHOP
-						</div>
-						<div class="bt bt-icon bt-heart">
-							<div class="popper">
-								Login to use Wishlist <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="far fa-heart"></i> 
-						</div>
-						<div class="bt bt-icon bt-sync">
-							<div class="popper">
-								Compare <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-sync"></i> 
-						</div>
-						<div class="bt bt-icon bt-search">
-							<div class="popper">
-								Quick View <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-search-plus"></i> 
-						</div>
-					</div>
-					<div class="color">
-						<span class="blue">●</span>
-						<span class="red">●</span>
-						<span class="yellow">●</span>
-					</div>
-					<div class="title">Yom orki lacinia</div>
-					<div class="brand">BASEL</div>
-					<div class="price">
-						<span class="price-def">$799.00</span>
-						<span class="price-sale">$592.00</span>
-					</div>
-				</div>
-				<div class="slide">
-					<div class="img-wrap">
-						<div class="img-case active">
-							<img src="../img/ss-01-yellow-01.jpg" class="w-100">
-							<img src="../img/ss-01-yellow-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-01-black-01.jpg" class="w-100">
-							<img src="../img/ss-01-black-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-01-blue-01.jpg" class="w-100">
-							<img src="../img/ss-01-blue-02.jpg" class="w-100">
-						</div>
-						<div class="bt bt-quick">
-							<i class="fa fa-shopping-cart"></i> QUICK SHOP
-						</div>
-						<div class="bt bt-icon bt-heart">
-							<div class="popper">
-								Login to use Wishlist <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="far fa-heart"></i> 
-						</div>
-						<div class="bt bt-icon bt-sync">
-							<div class="popper">
-								Compare <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-sync"></i> 
-						</div>
-						<div class="bt bt-icon bt-search">
-							<div class="popper">
-								Quick View <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-search-plus"></i> 
-						</div>
-					</div>
-					<div class="color">
-						<span class="yellow">●</span>
-						<span class="black">●</span>
-						<span class="blue">●</span>
-					</div>
-					<div class="title">Yus condntum sapien</div>
-					<div class="brand">BASEL</div>
-					<div class="price">$592.00</div>
-				</div>
-				<div class="slide">
-					<div class="img-wrap">
-						<div class="img-case active">
-							<img src="../img/ss-01-blue-01.jpg" class="w-100">
-							<img src="../img/ss-01-blue-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-01-black-01.jpg" class="w-100">
-							<img src="../img/ss-01-black-02.jpg" class="w-100">
-						</div>
-						<div class="img-case">
-							<img src="../img/ss-01-yellow-01.jpg" class="w-100">
-							<img src="../img/ss-01-yellow-02.jpg" class="w-100">
-						</div>
-						<div class="bt bt-quick">
-							<i class="fa fa-shopping-cart"></i> QUICK SHOP
-						</div>
-						<div class="bt bt-icon bt-heart">
-							<div class="popper">
-								Login to use Wishlist <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="far fa-heart"></i> 
-						</div>
-						<div class="bt bt-icon bt-sync">
-							<div class="popper">
-								Compare <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-sync"></i> 
-						</div>
-						<div class="bt bt-icon bt-search">
-							<div class="popper">
-								Quick View <i class="fa fa-caret-right"></i>
-							</div>
-							<i class="fa fa-search-plus"></i> 
-						</div>
-					</div>
-					<div class="color">
-						<span class="blue">●</span>
-						<span class="black">●</span>
-						<span class="yellow">●</span>
-					</div>
-					<div class="title">Yus condntum sapien</div>
-					<div class="brand">BASEL</div>
-					<div class="price">$592.00</div>
 				</div>
 			</div>
-			<div class="bt-pager bt-prev">〈</div>
-			<div class="bt-pager bt-next">〉</div>
 		</div>
-	</div>  -->
+	</nav>
+
 	<script src="../js/index.js"></script>
 </body>
+
 </html>
