@@ -183,6 +183,40 @@ function onNaviLoad(r) {
 		html += '</div>'; // .navi
 		$(".navi-wrap").append(html);
 	}
+	// .mo-navi 생성
+	for(var i in r.navs) {
+		html = '<li class="mo-navi">';
+		html += '<div class="title">'+r.navs[i].title+'</div>';
+		html += '<div class="bt-down">';
+		html += '<div class="slash slash-lt"></div>';
+		html += '<div class="slash slash-rt"></div>';
+		html += '</div>';
+		html += '<ul class="mo-sub">';
+		html += '<i class="mo-caret fa fa-caret-up"></i>';
+		if(r.navs[i].subs && r.navs[i].subs.length == 1) {
+			r.navs[i].subs = r.navs[i].subs[0].subs;
+		}	// blog를 한단계 끌어당기는 방법 
+		for(var j in r.navs[i].subs) {
+			html += '<li class="mo-sub-navi">';
+			html += '<div class="title">'+r.navs[i].subs[j].title+'</div>';
+			if(r.navs[i].subs[j].subs && r.navs[i].subs[j].subs.length > 0) {
+				html += '<div class="bt-down">';
+				html += '<div class="slash slash-lt"></div>';
+				html += '<div class="slash slash-rt"></div>';
+				html += '</div>';
+				html += '<ul class="mo-sub-sub">';
+				html += '<i class="mo-caret fa fa-caret-up"></i>';
+				for (var k in r.navs[i].subs[j].subs) {
+					html += '<li>'+r.navs[i].subs[j].subs[k].title+'</li>';
+				}
+				html += '</ul>';
+			}
+			html += '</li>';
+		}
+		html += '</ul>';
+		html += '</li>';
+		$(".mo-navi-wrap").append(html);
+	}
 	$(".navi-wrap > .navi").mouseenter(onEnter);
 	$(".navi-wrap > .navi").mouseleave(onLeave);
 	$(".sub-slide .color").find("span").click(onColorClick);
@@ -195,7 +229,25 @@ function onNaviLoad(r) {
 	});
 	$(".sub-slide .bt-prev").on("click", onSubPrevClick);
 	$(".sub-slide .bt-next").on("click", onSubNextClick);
-}
+	$(".navi-mo-icon").on("click", onNaviMoClick); // .navi-mo-icon 클릭
+	$(".mo-wrapper").on("click", onMoWrapperClick); // .mo-wrapper 클릭
+	$(".mo-wrap").on("click", onMoWrapClick); // .mo-wrap 클릭
+	$(".mo-navi .bt-down").on("click", onMoNaviClick); // .mo-navi .bt-down .slash 클릭 
+	}
+/* 
+<li class="mo-navi">
+					<div class="title">HOME</div>
+					<div class="bt-down">
+						<div class="slash slash-lt"></div>
+						<div class="slash slash-rt"></div>
+					</div>
+					<ul class="mo-sub">
+						<i class="fa fa-caret-up"></i>
+						<li>BASE</li>
+						<li>BASE</li>
+					</ul>
+				</li>
+ */
 
 // .navi-mo-icon click 콜백 
 function onNaviMoClick(e) {
@@ -221,12 +273,17 @@ function onMoWrapClick(e) {
 // .mo-navi click 콜백
 function onMoNaviClick(e) {
 	$(this).toggleClass("active");
+	if($(this).hasClass("active"))$(this).next().stop().slideDown(300);
+	else $(this).next().stop().slideUp(300);
 }
 
 
 // resize 콜백
 function onResize(e) {
-
+	var winWid = $(this).outerWidth();
+	if(winWid > 991 && $(".mo-wrapper").css("display") == 'block') {
+		$(".mo-wrapper").trigger("click");
+	}
 }
 
 // window scroll 콜백 
@@ -254,36 +311,30 @@ function onMobileScroll(e) {
 	// $("html, body").css({"overflow": "hidden", "height": "100vh"});
 }
 
+function onMobileWrapScroll(e) {
+	e.stopPropagation();
+	var winHei = $(window).outerHeight();
+	var meHei = $(this).find(".mo-navi-wrap").outerHeight();
+	if(meHei <= winHei) e.preventDefault();
+}
+
 
 
 /****************** 이벤트등록 ***************************/
 // Main Navi 생성 
 $.get('../json/navi.json', onNaviLoad);
 
-// .navi-mo-icon 클릭 
-$(".navi-mo-icon").on("click", onNaviMoClick);
-
-// .mo-wrapper 클릭
-$(".mo-wrapper").on("click", onMoWrapperClick);
-
-
-// .mo-wrap 클릭
-$(".mo-wrap").on("click", onMoWrapClick);
-
-// .mo-navi .bt-down .slash 클릭 
-$(".mo-navi .bt-down").on("click", onMoNaviClick);
-
-
 
 
 // 스크롤 이벤트
 $(window).on("scroll", onScroll);
 $(".mo-wrapper").on("scroll touchmove mousewheel", onMobileScroll);
+$(".mo-wrap").on("scroll touchmove mousewheel", onMobileWrapScroll);
 
 
 
 // 리사이즈 이벤트
-
+$(window).on("resize", onResize);
 
 /* 
 				<div class="navi">
