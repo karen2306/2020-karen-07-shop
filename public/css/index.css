@@ -5,12 +5,14 @@
 wrapper 1144px
 
 font-family: 'Rubik', sans-serif;
+font-family: 'Lora', serif;
 */
 
 /******************************** 공통사항 *****************************/
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
 
-html, body {font-size: 16px; height: 10000px;}
+html, body {font-size: 16px; height: 10000px; font-family: 'Rubik', sans-serif;}
 .wrapper {width: 1100px; margin: 0 auto;}
 
 .badge-wrap {position: relative;}
@@ -157,7 +159,7 @@ html, body {font-size: 16px; height: 10000px;}
 
 /******************************** .mo-wrapper *****************************/
 .mo-wrapper {width: 100%; height: 100vh; position: fixed; top: 0; left: 0; z-index: 10000; background-color: rgba(0,0,0,0); transition: background-color 0.5s; display: none;}
-.mo-wrapper > .mo-wrap {width: 270px; height: 100%; position: absolute; left: -270px; top: 0; background-color: #0c0c0c; transition: left 0.5s; color: #f8f8f8; overflow-y: scroll;}
+.mo-wrapper > .mo-wrap {width: 270px; height: 100%; position: absolute; left: -270px; top: 0; background-color: #0c0c0c; transition: left 0.5s; color: #f8f8f8; overflow-y: auto;}
 .mo-search-wrap {padding: 0.625em; border-bottom: 2px solid #444; position: relative;}
 .mo-search-wrap .input-search {width: 100%; padding: 0.5em 1.5em; border: 1px solid #444; background-color: #252525; color: inherit;}
 .mo-search-wrap .input-search:focus {outline: none;}
@@ -193,7 +195,30 @@ html, body {font-size: 16px; height: 10000px;}
 
 
 
-/******************************** 공통사항 *****************************/
+/******************************** .banner-wrapper *****************************/
+.banner-wrapper {background-color: #eee; height: 522px; position: relative;}
+.banner-wrapper > .wrapper {position: relative;}
+.banner-wrapper > .wrapper > .cate-wrap {position: absolute; width:30%; height: 522px; display: flex; flex-direction: column; justify-content: space-between; z-index: 11;}
+
+.banner-wrapper > .wrapper > .cate-wrap > .cate {flex-grow: 1; display: flex; align-items: center; justify-content: space-between; padding:0 1.75em; font-size: 0.75em; background-color: #339059; color: #fff; font-weight: 500; cursor: pointer;}
+.banner-wrapper > .wrapper > .cate-wrap > .cate:hover {background-color: #fbbc34;}
+
+
+.banner-wrapper .bt {position: absolute; top: 50%; transform: translateY(-50%); color: #777; font-size: 3em; transition: all 0.5s; opacity: 0; cursor: pointer;}
+.banner-wrapper .bt:hover {color: #222;}
+.banner-wrapper .bt-prev {left: 12px;}
+.banner-wrapper .bt-next {right: 12px;}
+.banner-wrapper .slide-stage:hover .bt {opacity: 1;}
+
+.banner-wrapper .slide-stage {position: relative; height: 100%; overflow: hidden; z-index: 10;}
+.banner-wrapper .slide-wrap {width: 300%; height: 100%; display: flex; position: relative;}
+.banner-wrapper .slide {flex: 33.3333% 0 0; height: 100%; background-position: center top; background-size: cover; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.banner-wrapper .slide .slogan {font-family: 'Lora', serif; font-style: italic; color: #339059; font-size: 1.5em;}
+.banner-wrapper .slide .title {font-size: 3em; color: #333; padding: 0.5em;}
+.banner-wrapper .slide .price {font-size: 8em; color: #ddd; padding: 0.125em}
+.banner-wrapper .slide .bt-banner {border: 1px solid #222; font-size: 0.875em; padding: 0.75em 1.5em; color: #444; transition: all 0.5s; background-color: #f8f8f8; outline: none;}
+.banner-wrapper .slide .bt-banner:hover {background-color: #222; color: #f8f8f8;}
+
 
 
 

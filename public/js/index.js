@@ -285,6 +285,12 @@ function onResize(e) {
 		$(".mo-wrapper").trigger("click");
 	}
 }
+/* function onResize(e) {
+	var winWid = $(this).outerWidth();
+	if(winWid > 991 && $(".mo-wrapper").css("display") == 'block') {
+		$(".mo-wrapper").trigger("click");
+	}
+} */
 
 // window scroll 콜백 
 function onScroll(e) {
@@ -320,9 +326,117 @@ function onMobileWrapScroll(e) {
 
 
 
+function onCateLoad(r) {
+	var html = '';
+	for(var i in r.cates) {
+		html  = '<div class="cate">'+r.cates[i].title;
+		if(r.cates[i].arrow) html += '<i class="fa fa-angle-right"></i>';
+		html += '</div>';
+		$(".cate-wrap").append(html);
+	}
+}
+
+var bannerNow = 0;
+var bannerLast = 0;
+var banners = [];
+var bannerWidth = 0;
+
+function onBannerLoad(r) {
+	var html = '';
+	for(var i in r.banners) {
+		html  = '<div class="slide" style="background-image: url('+r.banners[i].src+')">';
+		html += '< class="slogan">'+r.banners[i].slogan+'</	h3>';
+		html += '<h2 class="title">'+r.banners[i].title+'</h2>';
+		html += '<h4 class="price">$<span>'+r.banners[i].price	+'</span></h4>';
+		html += '<button class="bt-banner">SHOP OTHER</button>';
+		html += '</div>';
+		banners.push($(html).appendTo(".banner-wrapper .slide-wrap"));
+	}
+	bannerLast = $(".banner-wrapper .slide").length - 1;
+	$(".banner-wrapper .slide-wrap").swipe({
+		// swipe: onBannerSwipe,
+		triggerOnTouchEnd: true,
+		swipeStatus: swipeStatus,
+	});
+}
+
+
+function onBannerSwipe (e, dir, dist, duration, fingerCnt, fingerData) {
+	if(dir == 'left') { //next
+		if(bannerNow < bannerLast) {
+			bannerNow++;
+			bannerAni();
+		}
+	}
+	if(dir == 'right') { //prev
+		if(bannerNow > 0) {
+			bannerNow--;
+			bannerAni();
+		}
+	}
+}
+
+function bannerAni() {
+	$(".banner-wrapper .slide-wrap").stop().animate({"left": -bannerNow*100+"%"}, 500);
+
+}
+
+function swipeStatus(event, phase, direction, distance) {
+	//If we are moving before swipe, and we are going L or R in X mode, or U or D in Y mode then drag.
+	if (phase == "move" && (direction == "left" || direction == "right")) {
+			var duration = 0;
+			bannerWidth = $(".banner-wrapper .slide").eq(0).outerWidth();
+
+			if (direction == "left") {
+					scrollImages((bannerWidth * bannerNow) + distance, duration);
+			} else if (direction == "right") {
+					scrollImages((bannerWidth * bannerNow) - distance, duration);
+			}
+
+	} else if (phase == "cancel") {
+			scrollImages(bannerWidth * bannerNow, 500);
+	} else if (phase == "end") {
+			if (direction == "right") {
+					previousImage();
+			} else if (direction == "left") {
+					nextImage();
+			}
+	}
+}
+
+function previousImage() {
+	bannerNow = Math.max(bannerNow - 1, 0);
+	scrollImages(bannerWidth * bannerNow, 500);
+}
+
+function nextImage() {
+	bannerNow = Math.min(bannerNow + 1, bannerLast);
+	scrollImages(bannerWidth * bannerNow, 500);
+}
+
+/**
+* Manually update the position of the imgs on drag
+*/
+function scrollImages(distance, duration) {
+	$(".banner-wrapper .slide").css("transition-duration", (duration / 1000).toFixed(1) + "s");
+
+	//inverse the number we set in the css
+	var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+	$(".banner-wrapper .slide").css("transform", "translate(" + value + "px,0)");
+}
+
+
+
 /****************** 이벤트등록 ***************************/
 // Main Navi 생성 
 $.get('../json/navi.json', onNaviLoad);
+
+// Category 생성 
+$.get('../json/cate.json', onCateLoad);
+
+
+// Banner 생성 
+$.get('../json/banner.json', onBannerLoad);
 
 
 
