@@ -284,6 +284,7 @@ function onResize(e) {
 	if(winWid > 991 && $(".mo-wrapper").css("display") == 'block') {
 		$(".mo-wrapper").trigger("click");
 	}
+	scrollImages(getBannerWidth() * bannerNow, 0);
 }
 /* function onResize(e) {
 	var winWid = $(this).outerWidth();
@@ -337,10 +338,7 @@ function onCateLoad(r) {
 }
 
 var bannerNow = 0;
-var bannerLast = 0;
-var banners = [];
-var bannerWidth = 0;
-
+var $banners = [];
 function onBannerLoad(r) {
 	var html = '';
 	for(var i in r.banners) {
@@ -350,81 +348,76 @@ function onBannerLoad(r) {
 		html += '<h4 class="price">$<span>'+r.banners[i].price	+'</span></h4>';
 		html += '<button class="bt-banner">SHOP OTHER</button>';
 		html += '</div>';
-		banners.push($(html).appendTo(".banner-wrapper .slide-wrap"));
+		$banners.push($(html).appendTo(".banner-wrapper .slide-wrap"));
 	}
-	bannerLast = $(".banner-wrapper .slide").length - 1;
-	$(".banner-wrapper .slide-wrap").swipe({
-		// swipe: onBannerSwipe,
-		triggerOnTouchEnd: true,
-		swipeStatus: swipeStatus,
-	});
+	// .banner-wrapper의 이벤트 
+	$(".banner-wrapper .slide-wrap").swipe({swipeStatus: swipeStatus});
+	$(".banner-wrapper .bt-prev").on("click", onBannerPrev);
+	$(".banner-wrapper .bt-next").on("click", onBannerNext);
+}
+
+// .banner-wrapper .slide의 width()를 px로 리턴
+function getBannerWidth() {
+	return $(".banner-wrapper .slide").eq(0).outerWidth();
+}
+
+// .banner-wrapper .slide의 마지막 Index 리턴 
+function getBannerLast() {
+	return $(".banner-wrapper .slide").length - 1;
 }
 
 
-function onBannerSwipe (e, dir, dist, duration, fingerCnt, fingerData) {
-	if(dir == 'left') { //next
-		if(bannerNow < bannerLast) {
-			bannerNow++;
-			bannerAni();
-		}
-	}
-	if(dir == 'right') { //prev
-		if(bannerNow > 0) {
-			bannerNow--;
-			bannerAni();
-		}
-	}
-}
 
-function bannerAni() {
-	$(".banner-wrapper .slide-wrap").stop().animate({"left": -bannerNow*100+"%"}, 500);
-
-}
 
 function swipeStatus(event, phase, direction, distance) {
-	//If we are moving before swipe, and we are going L or R in X mode, or U or D in Y mode then drag.
 	if (phase == "move" && (direction == "left" || direction == "right")) {
-			var duration = 0;
-			bannerWidth = $(".banner-wrapper .slide").eq(0).outerWidth();
-
-			if (direction == "left") {
-					scrollImages((bannerWidth * bannerNow) + distance, duration);
-			} else if (direction == "right") {
-					scrollImages((bannerWidth * bannerNow) - distance, duration);
-			}
-
-	} else if (phase == "cancel") {
-			scrollImages(bannerWidth * bannerNow, 500);
-	} else if (phase == "end") {
-			if (direction == "right") {
-					previousImage();
-			} else if (direction == "left") {
-					nextImage();
-			}
+		scrollImages((getBannerWidth() * bannerNow) + (direction == "left" ? distance : -distance) , 0);
+	}
+	else if (phase == "cancel") {
+			scrollImages(getBannerWidth() * bannerNow, 500);
+	} 
+	else if (phase == "end") {
+			if (direction == "right")	prevImage();
+			else if (direction == "left")	nextImage();
 	}
 }
 
-function previousImage() {
+function prevImage() {
 	bannerNow = Math.max(bannerNow - 1, 0);
-	scrollImages(bannerWidth * bannerNow, 500);
+	scrollImages(getBannerWidth() * bannerNow, 500);
 }
 
 function nextImage() {
-	bannerNow = Math.min(bannerNow + 1, bannerLast);
-	scrollImages(bannerWidth * bannerNow, 500);
+	bannerNow = Math.min(bannerNow + 1, getBannerLast());
+	scrollImages(getBannerWidth() * bannerNow, 500);
 }
 
-/**
-* Manually update the position of the imgs on drag
-*/
 function scrollImages(distance, duration) {
-	$(".banner-wrapper .slide").css("transition-duration", (duration / 1000).toFixed(1) + "s");
-
-	//inverse the number we set in the css
-	var value = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
-	$(".banner-wrapper .slide").css("transform", "translate(" + value + "px,0)");
+	var dir = duration || 0
+	var tar = (distance < 0 ? "" : "-") + Math.abs(distance).toString();
+	$(".banner-wrapper .slide").css("transition-duration", (dir / 1000).toFixed(1) + "s");
+	$(".banner-wrapper .slide").css("transform", "translate(" + tar + "px,0)");
 }
 
+
+function onBannerPrev() {
+	bannerNow = bannerNow == 0 ? getBannerLast() : bannerNow - 1;
+	bannerAni();
+	
+}
+
+function onBannerNext() {
+	bannerNow = bannerNow == getBannerLast() ? 0 : bannerNow + 1;
+	bannerAni();
+}
+
+function bannerAni() {
+	var $s = $($banners[bannerNow].clone()).appendTo(".banner-wrapper .slide-stage").addClass("active");
+	$s.stop().animate({"opacity" : 1}, 500, function() {
+		scrollImages(getBannerWidth() * bannerNow, 0);
+		$(this).remove();
+	});
+}
 
 
 /****************** 이벤트등록 ***************************/

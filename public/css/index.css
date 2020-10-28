@@ -6,11 +6,15 @@ wrapper 1144px
 
 font-family: 'Rubik', sans-serif;
 font-family: 'Lora', serif;
+font-family: 'Aref Ruqaa', serif;
+
+
 */
 
 /******************************** 공통사항 *****************************/
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa&display=swap');
 
 html, body {font-size: 16px; height: 10000px; font-family: 'Rubik', sans-serif;}
 .wrapper {width: 1100px; margin: 0 auto;}
@@ -212,17 +216,36 @@ html, body {font-size: 16px; height: 10000px; font-family: 'Rubik', sans-serif;}
 
 .banner-wrapper .slide-stage {position: relative; height: 100%; overflow: hidden; z-index: 10;}
 .banner-wrapper .slide-wrap {width: 300%; height: 100%; display: flex; position: relative;}
-.banner-wrapper .slide {flex: 33.3333% 0 0; height: 100%; background-position: center top; background-size: cover; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.banner-wrapper .slide {flex: 33.3333% 0 0; height: 100%; background-position: center top; background-size: cover; background-repeat: no-repeat; display: flex; flex-direction: column; justify-content: center; align-items: center; user-select: none; cursor: grab;}
 .banner-wrapper .slide .slogan {font-family: 'Lora', serif; font-style: italic; color: #339059; font-size: 1.5em;}
 .banner-wrapper .slide .title {font-size: 3em; color: #333; padding: 0.5em;}
 .banner-wrapper .slide .price {font-size: 8em; color: #ddd; padding: 0.125em}
 .banner-wrapper .slide .bt-banner {border: 1px solid #222; font-size: 0.875em; padding: 0.75em 1.5em; color: #444; transition: all 0.5s; background-color: #f8f8f8; outline: none;}
 .banner-wrapper .slide .bt-banner:hover {background-color: #222; color: #f8f8f8;}
+.banner-wrapper .slide.active {width: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: none !important; transform: none !important;}
 
 
 
 
-/******************************** 공통사항 *****************************/
+/******************************** .middle-wrapper *****************************/
+.middle-wrapper {display: flex; margin: 3em auto; justify-content:space-between; }
+.middle-wrapper .middle {flex: 23% 0 0; overflow: hidden; cursor: pointer; position: relative;}
+.middle-wrapper .middle:nth-child(2) {flex: 48.2% 0 0;}
+.middle-wrapper .middle img {transition: all 0.75s;}
+.middle-wrapper .middle:hover img {transform: scale(1.2);}
+
+.middle-wrapper .middle .title-wrap {position: absolute; bottom: 1em; left: 1em; background-color: rgba(0, 0, 0, 0.6); color: #f8f8f8; padding: 1em 2em;}
+.middle-wrapper .middle .title-wrap .title {font-family: 'Aref Ruqaa', serif; font-size: 1.5em; border-bottom: 1px solid #f8f8f8; line-height: 1.5em; white-space: nowrap;}
+.middle-wrapper .middle .title-wrap .slogan {font-size: 0.75em; font-weight: 300; text-align: center; margin: 0.75em 0;}
+
+.middle-wrapper .middle:first-child .title-wrap {left: 50%; transform: translateX(-50%);}
+.middle-wrapper .middle:last-child .title-wrap {width: 100%; height: 100%; left: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; background-color: rgba(0, 0, 0, 0.2); transition: all 0.75s;}
+.middle-wrapper .middle:last-child:hover .title-wrap {background-color: rgba(0, 0, 0, 0.6);}
+.middle-wrapper .middle:last-child .title-wrap .title {font-family: 'sans serif'; font-weight: bold; border-bottom: none;}
+.middle-wrapper .middle:last-child .title-wrap .title-badge {background-color: #189954; font-size: 0.75em; padding: 0.25em 0.5em; transition: all 0.75s}
+.middle-wrapper .middle:last-child .title-wrap .readmore {font-size: 0.75em; border-bottom: 1px solid #aaa;}
+.middle-wrapper .middle:last-child:hover .title-wrap .readmore {border-bottom: 1px solid #f8f8f8;}
+
 
 
 
@@ -237,7 +260,7 @@ html, body {font-size: 16px; height: 10000px; font-family: 'Rubik', sans-serif;}
 	.wrpper {width: 900px;}
 }
 @media screen and (max-width: 991px) {
-	.wrapper {width: 700px;}
+	.wrapper {width: 94%;}
 	.top-wrapper > .wrapper {justify-content:center;}
 	.top-wrapper .link-wrap {display: none;}
 	.title-wrapper {padding:0.5em 0;}
@@ -251,9 +274,14 @@ html, body {font-size: 16px; height: 10000px; font-family: 'Rubik', sans-serif;}
 
 	.search-wrapper {display: none !important;}
 
+	.banner-wrapper > .wrapper {display: none;}
+	.middle-wrapper {flex-wrap: wrap;}
+	.middle-wrapper .middle {flex: 100% 0 0; margin: 1em 0;}
+	.middle-wrapper .middle:nth-child(2) {flex: 100% 0 0;}
+
 }
 @media screen and (max-width: 767px) {
-	.wrapper {width: 500px;}
+
 }
 @media screen and (max-width: 575px) {
 	.wrapper {width: 98%;}
