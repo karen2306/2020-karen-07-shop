@@ -1,18 +1,19 @@
 /*********************** 전역변수 선언 *****************************/
 var subNow = 0; 			// .navi.FULL 에서의 슬라이드
 var subLast = 3;			// .navi.FULL 에서의 슬라이드
+var catePrds = [];		// .cate-wrapper의 전역변수
 
 
 
 /*********************** 사용자 지정함수  *****************************/
 // .navi.FULL 에서의 슬라이드
 function subAni() {
-	$(".sub-slide .wrap").stop().animate({
+	$(".header-wrapper .sub-slide .wrap").stop().animate({
 		"left": -100 * subNow + "%"
 	}, 500, function () {
 		if (subNow == subLast) {
 			subNow = 0;
-			$(".sub-slide .wrap").css("left", 0);
+			$(".header-wrapper .sub-slide .wrap").css("left", 0);
 		}
 	});
 }
@@ -65,7 +66,7 @@ function onColorClick() {
 function onSubPrevClick() {
 	if (subNow == 0) {
 		subNow = subLast - 1;
-		$(".sub-slide .wrap").css("left", -subLast * 100 + "%");
+		$(".header-wrapper .sub-slide .wrap").css("left", -subLast * 100 + "%");
 	} else subNow--;
 	subAni();
 }
@@ -115,7 +116,7 @@ function onNaviLoad(r) {
 			html += '</div>';
 			html += '</div>'; //lt
 			html += '<div class="rt">';
-			html += '	<div class="sub-slide">	';
+			html += '	<div class="sub-slide type1">	';
 			html += '		<div class="stage">	';
 			html += '			<div class="wrap">	';
 			r.navs[i].slides.push(r.navs[i].slides[0]);
@@ -181,7 +182,9 @@ function onNaviLoad(r) {
 		}
 		html += '</div>'; // .sub-wrap
 		html += '</div>'; // .navi
-		$(".navi-wrap").append(html);
+		$(".header-wrapper .navi-wrap").append(html);
+		var slideWid = $(".header-wrapper .sub-slide .slide").length * 100 + "%";
+		$(".header-wrapper .sub-slide .wrap").css("width", slideWid);
 	}
 	// .mo-navi 생성
 	for(var i in r.navs) {
@@ -217,18 +220,18 @@ function onNaviLoad(r) {
 		html += '</li>';
 		$(".mo-navi-wrap").append(html);
 	}
-	$(".navi-wrap > .navi").mouseenter(onEnter);
-	$(".navi-wrap > .navi").mouseleave(onLeave);
-	$(".sub-slide .color").find("span").click(onColorClick);
-	$(".sub-slide .wrap").swipe({
+	$(".header-wrapper .navi-wrap > .navi").mouseenter(onEnter);
+	$(".header-wrapper .navi-wrap > .navi").mouseleave(onLeave);
+	$(".header-wrapper .sub-slide .color").find("span").click(onColorClick);
+	$(".header-wrapper .sub-slide .wrap").swipe({
 		swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-			if (direction == 'left') $(".sub-slide .bt-next").trigger("click");
-			if (direction == 'right') $(".sub-slide .bt-prev").trigger("click");
+			if (direction == 'left') $(".header-wrapper .sub-slide .bt-next").trigger("click");
+			if (direction == 'right') $(".header-wrapper .sub-slide .bt-prev").trigger("click");
 		},
 		threshold: 30
 	});
-	$(".sub-slide .bt-prev").on("click", onSubPrevClick);
-	$(".sub-slide .bt-next").on("click", onSubNextClick);
+	$(".header-wrapper .sub-slide .bt-prev").on("click", onSubPrevClick);
+	$(".header-wrapper .sub-slide .bt-next").on("click", onSubNextClick);
 	$(".navi-mo-icon").on("click", onNaviMoClick); // .navi-mo-icon 클릭
 	$(".mo-wrapper").on("click", onMoWrapperClick); // .mo-wrapper 클릭
 	$(".mo-wrap").on("click", onMoWrapClick); // .mo-wrap 클릭
@@ -286,12 +289,6 @@ function onResize(e) {
 	}
 	scrollImages(getBannerWidth() * bannerNow, 0);
 }
-/* function onResize(e) {
-	var winWid = $(this).outerWidth();
-	if(winWid > 991 && $(".mo-wrapper").css("display") == 'block') {
-		$(".mo-wrapper").trigger("click");
-	}
-} */
 
 // window scroll 콜백 
 function onScroll(e) {
@@ -333,7 +330,7 @@ function onCateLoad(r) {
 		html  = '<div class="cate">'+r.cates[i].title;
 		if(r.cates[i].arrow) html += '<i class="fa fa-angle-right"></i>';
 		html += '</div>';
-		$(".cate-wrap").append(html);
+		$(".banner-wrapper .cate-wrap").append(html);
 	}
 }
 
@@ -419,6 +416,110 @@ function bannerAni() {
 	});
 }
 
+function getCount() {
+	var wid = $(window).outerWidth();
+	var count = 4;
+	if(wid <= 991 && wid > 767) count = 3;
+	else if(wid <= 767 && wid > 575) count = 2;
+	else if(wid <= 575) count = 1;
+	return count;
+}
+
+function onProductLoad(r) {
+	var html = '';
+	for(var i in r.prds) {
+		html  = '<div class="slide swiper-slide">';
+		html += '					<div class="img-wrap">';
+		html += '						<div class="img-case active"> ';
+		for(var j in r.prds[i].src) {
+			html += '<img src="'+r.prds[i].src[j]+'" class="w-100">';
+		}
+		html += '</div>';
+		html += '<div class="bt bt-icon bt-heart">';
+		html += '<div class="popper"> Login to use Wishlist <i class="fa fa-caret-right"></i> </div> <i class="far fa-heart"></i>';
+		html += '</div>';
+		html += '<div class="bt bt-icon bt-sync">';
+		html += '<div class="popper"> Compare <i class="fa fa-caret-right"></i> </div> <i class="fa fa-sync"></i>';
+		html += '</div>';
+		html += '<div class="bt bt-icon bt-search">';
+		html += '<div class="popper"> Quick View <i class="fa fa-caret-right"></i> </div> <i class="fa fa-search-plus"></i>';
+		html += '</div>';
+		html += '</div>';
+		html += '<div class="title">'+r.prds[i].title+'</div>';
+		html += '<div class="brand">'+r.prds[i].brand+'</div>';
+		html += '<div class="price-wrap">';
+		html += '<div class="price">'+r.prds[i].price+'</div>';
+		html += '<div class="cart"><i class="fa fa-shopping-cart"></i>Add to cart</div>';
+		html += '</div>';
+		html += '</div>';
+		$(".sub-slide.type2 .swiper-wrapper").append(html);
+	}
+	var swiper = new Swiper('.sub-slide.type2 .swiper-container', {
+		slidesPerView: getCount(),
+		slidesPerGroup: getCount(),
+		spaceBetween: 0,
+		loop: true,
+		loopFillGroupWithBlank: false,
+		navigation: {
+			nextEl: '.bt-next',
+			prevEl: '.bt-prev',
+		}
+	});
+	swiper.on("resize", function() {
+		this.params.slidesPerGroup = getCount();
+		this.params.slidesPerView = getCount();
+	});
+}
+
+
+
+function onPrdCateLoad(r) {
+	var html = '';
+	for(var i in r.cates) {
+		html  = '<div class="cate '+r.cates[i].class+'">';
+		html += '<div class="cont">';
+		html += '<div class="designer">DESIGNERS: <span>'+r.cates[i].designer+'</span></div>';
+		html += '<h2 class="title">'+r.cates[i].title+'</h2>';
+		html += '<div class="price">$<span>'+r.cates[i].price+'</span></div>';
+		html += '<div class="content">'+r.cates[i].content+'</div>';
+		html += '<button class="bt-read">READ MORE</button>';
+		html += '	</div>';
+		for(var j in r.cates[i].src) {
+			html += '<div class="image">';
+			html += '<img src="'+r.cates[i].src[j]+'" alt="상품" class="w-100">';
+			html += '	</div>';
+		}
+		html += '	</div>';
+		catePrds.push($(html));
+		// $(".cate-wrapper .cate-wrap").append(html);
+	}
+	$(".cate-wrapper .navi").click(onCateNaviClick);
+	$(".cate-wrapper .navi").eq(0).trigger("click");
+
+}
+
+
+function onCateNaviClick(e) {
+	$(this).addClass("active");
+	$(this).siblings().removeClass("active");
+	var id = $(this).index();
+	cateAni(id);
+}
+
+function cateAni(id) {
+	$(".cate-wrapper .cate").css({"opacity": 0, "transform": "translateY(100px)"});
+	var slide = $(catePrds[id].clone()).appendTo(".cate-wrapper .cate-wrap").css({
+		"opacity": 0, "transform": "translateY(100px)", "position": "absolute"
+	});
+	slide.css("opacity");
+	slide.css("transform");
+	slide.css({"opacity": 1, "transform": "translateY(0)"});
+	setTimeout(function() {
+		$(".cate-wrapper .cate").remove();
+		$(catePrds[id].clone()).appendTo(".cate-wrapper .cate-wrap");
+	}, 500);
+}
+
 
 /****************** 이벤트등록 ***************************/
 // Main Navi 생성 
@@ -432,6 +533,14 @@ $.get('../json/cate.json', onCateLoad);
 $.get('../json/banner.json', onBannerLoad);
 
 
+// prd slide 생성 
+$.get('../json/product.json', onProductLoad);
+
+
+// cate-wrapper 생성 
+$.get('../json/prd-cate.json', onPrdCateLoad);
+
+
 
 // 스크롤 이벤트
 $(window).on("scroll", onScroll);
@@ -443,57 +552,3 @@ $(".mo-wrap").on("scroll touchmove mousewheel", onMobileWrapScroll);
 // 리사이즈 이벤트
 $(window).on("resize", onResize);
 
-/* 
-				<div class="navi">
-					<span class="title">HOME <i class="fa fa-angle-down"></i></span>
-					<div class="sub-wrap">
-						<div class="sub">
-							<div class="title">1. HOME DEFAULT</div>
-							<div class="cont-img"><img src="../img/default.jpg" alt="그림" class="w-100"></div>
-						</div>
-					</div>
-				</div> 
-
-
-
-<div class="sub-slide">
-	<div class="stage">
-		<div class="wrap">
-			<div class="slide">
-				<div class="img-wrap">
-					<div class="img-case active">
-						<img src="../img/ss-01-blue-01.jpg" class="w-100">
-						<img src="../img/ss-01-blue-02.jpg" class="w-100">
-					</div>
-					<div class="bt bt-icon bt-heart">
-						<div class="popper">
-							Login to use Wishlist <i class="fa fa-caret-right"></i>
-						</div>
-						<i class="far fa-heart"></i>
-					</div>
-					<div class="bt bt-icon bt-sync">
-						<div class="popper">
-							Compare <i class="fa fa-caret-right"></i>
-						</div>
-						<i class="fa fa-sync"></i>
-					</div>
-					<div class="bt bt-icon bt-search">
-						<div class="popper">
-							Quick View <i class="fa fa-caret-right"></i>
-						</div>
-						<i class="fa fa-search-plus"></i>
-					</div>
-				</div>
-				<div class="color">
-					<span class="blue">●</span>
-				</div>
-				<div class="title">Yus condntum sapien</div>
-				<div class="brand">BASEL</div>
-				<div class="price">$592.00</div>
-			</div>
-		</div>
-		<div class="bt-pager bt-prev">〈</div>
-		<div class="bt-pager bt-next">〉</div>
-	</div>
-</div> 
-				*/
