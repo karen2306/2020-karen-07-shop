@@ -425,6 +425,14 @@ function getCount() {
 	return count;
 }
 
+function getCount2() {
+	var wid = $(window).outerWidth();
+	var count = 3;
+	if(wid <= 991 && wid > 767) count = 2;
+	else if(wid <= 767) count = 1;
+	return count;
+}
+
 function onProductLoad(r) {
 	var html = '';
 	for(var i in r.prds) {
@@ -470,6 +478,9 @@ function onProductLoad(r) {
 		this.params.slidesPerView = getCount();
 	});
 }
+
+
+
 
 
 
@@ -521,6 +532,71 @@ function cateAni(id) {
 }
 
 
+function onBranchLoad(r) {
+	var html = '';
+	for(var i in r.branchs) {
+		html  = '<li class="branch">';
+		html += '	<img src="'+r.branchs[i].src+'" alt="'+r.branchs[i].title+'" class="w-100">';
+		html += '	<button class="bt-link">'+r.branchs[i].title+'</button>';
+		html += '</li>';
+		$(".branch-wrapper .branch-wrap").append(html);
+	}
+}
+
+
+/* function onBranchLoad(r) {
+	var html = '';
+	for(var i in r.branchs) {
+		html  = '<li class="branch">';
+		html += '<img src="'+r.branchs[i].src+'" alt="'+r.brnachs[i].title+'" class="w-100">';
+		html += '<button class="bt-link">'+r.brnachs[i].title+'</button>';
+		html += '</li>';
+		$(".branch-wrapper .branch-wrap").append(html);
+	}
+} */
+
+
+function onBlogLoad(r) {
+	var html = '';
+	for(var i in r.blogs) {
+		html  = '<div class="blog slide swiper-slide">';
+		html += '<div class="img-wrap">';
+		html += '<img src="'+r.blogs[i].src+'" alt="blog" class="w-100">';
+		html += '<div class="date-wrap">';
+		html += '<div class="date">'+r.blogs[i].date+'</div>';
+		html += '<div class="month">'+r.blogs[i].month+'</div>';
+		html += '</div>';
+		html += '<div class="tag">'+r.blogs[i].tag+'</div>';
+		html += '</div>';
+		html += '<h3 class="title">'+r.blogs[i].title+'</h3>';
+		html += '<button class=" bt-comment">Leave a comment</button>';
+		html += '<p class="content">'+r.blogs[i].content+'</p>';
+		html += '<button class=" bt-read">Rede More</button>';
+		html += '</div>';
+		$(".blog-wrapper .blog-wrap").append(html);
+	}				
+	var swiper = new Swiper('.sub-slide.type3 .swiper-container', {
+		slidesPerView: getCount2(),
+		slidesPerGroup: getCount2(),
+		spaceBetween: 0,
+		loop: true,
+		loopFillGroupWithBlank: false,
+		pagination: {
+			el: '.swiper-pagination',
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.bt-next',
+			prevEl: '.bt-prev',
+		}
+	});
+	swiper.on("resize", function() {
+		this.params.slidesPerGroup = getCount2();
+		this.params.slidesPerView = getCount2();
+	});
+}
+
+
 /****************** 이벤트등록 ***************************/
 // Main Navi 생성 
 $.get('../json/navi.json', onNaviLoad);
@@ -540,6 +616,14 @@ $.get('../json/product.json', onProductLoad);
 // cate-wrapper 생성 
 $.get('../json/prd-cate.json', onPrdCateLoad);
 
+// branch-wrapper 생성 
+$.get('../json/branch.json', onBranchLoad);
+
+
+
+// blog-wrapper 생성 
+$.get('../json/blog.json', onBlogLoad);
+
 
 
 // 스크롤 이벤트
@@ -551,4 +635,13 @@ $(".mo-wrap").on("scroll touchmove mousewheel", onMobileWrapScroll);
 
 // 리사이즈 이벤트
 $(window).on("resize", onResize);
+
+// 이메일 발송 
+emailjs.init("user_Wd1av9w9F29DCvn3iVxIr");
+function mailSend(f) {
+	f.contact_number.value = Math.random() * 100000 | 0;
+	emailjs.sendForm('service_hr58s5n', 'template_y8yl7dn', f);
+	return false;
+	
+}
 
