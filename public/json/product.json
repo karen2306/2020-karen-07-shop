@@ -1,16 +1,16 @@
 {
 	"prds": [
-		{"id": 1, "title": "Yovbeglass Side Chair", "brand": "DEMO-BASEL2", "price": "579.00", 
-			"src": ["../img/chair-01-f.jpg", "../img/chair-01-b.jpg"]},
-		{"id": 1, "title": "Yood Side Chair", "brand": "DEMO-BASEL", "price": "679.00", 
-			"src": ["../img/chair-02-f.jpg", "../img/chair-02-b.jpg"]},
-		{"id": 1, "title": "Yovded Plastic Armchair", "brand": "DEMO-BASEL2", "price": "499.00", 
-			"src": ["../img/chair-03-f.jpg", "../img/chair-03-b.jpg"]},
-		{"id": 1, "title": "Yovlastic Side Chair", "brand": "DEMO-BASEL2", "price": "449.00", 
-			"src": ["../img/chair-04-f.jpg", "../img/chair-04-b.jpg"]},
-		{"id": 1, "title": "Yrmchair Locker Base", "brand": "DEMO-BASEL", "price": "659.00", 
-			"src": ["../img/chair-05-f.jpg", "../img/chair-05-b.jpg"]},
-		{"id": 1, "title": "Yovded Fiberglass Armchair", "brand": "DEMO-BASEL2", "price": "570.00", 
-			"src": ["../img/chair-06-f.jpg", "../img/chair-06-b.jpg"]}
+		{"id": 1, "title": "Yovbeglass Sunglasses", "brand": "DEMO-BASEL2", "price": "57.00", 
+			"src": ["../img/glass/glass1-0.jpg", "../img/glass/glass1-1.jpg"]},
+		{"id": 1, "title": "Yood Sunglasses", "brand": "DEMO-BASEL", "price": "69.00", 
+			"src": ["../img/glass/glass2-0.jpg", "../img/glass/glass2-1.jpg"]},
+		{"id": 1, "title": "Yovded Plastic Sunglasses", "brand": "DEMO-BASEL2", "price": "49.00", 
+			"src": ["../img/glass/glass3-0.jpg", "../img/glass/glass3-1.jpg"]},
+		{"id": 1, "title": "Yovlastic Glasses", "brand": "DEMO-BASEL2", "price": "44.00", 
+			"src": ["../img/glass/glass4-0.jpg", "../img/glass/glass4-1.jpg"]},
+		{"id": 1, "title": "Yrmchair Locker Glasses", "brand": "DEMO-BASEL", "price": "65.00", 
+			"src": ["../img/glass/glass5-0.jpg", "../img/glass/glass5-1.jpg"]},
+		{"id": 1, "title": "Yovded Fiberglass Glasses", "brand": "DEMO-BASEL2", "price": "57.00", 
+			"src": ["../img/glass/glass6-0.jpg", "../img/glass/glass6-1.jpg"]}
 	]
 }
