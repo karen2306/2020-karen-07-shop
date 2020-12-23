@@ -340,7 +340,7 @@ function onBannerLoad(r) {
 	var html = '';
 	for(var i in r.banners) {
 		html  = '<div class="slide" style="background-image: url('+r.banners[i].src+')">';
-		html += '< class="slogan">'+r.banners[i].slogan+'</	h3>';
+		html += '<h3 class="slogan">'+r.banners[i].slogan+'</h3>';
 		html += '<h2 class="title">'+r.banners[i].title+'</h2>';
 		html += '<h4 class="price">$<span>'+r.banners[i].price	+'</span></h4>';
 		html += '<button class="bt-banner">SHOP OTHER</button>';
